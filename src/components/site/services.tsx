@@ -1,137 +1,53 @@
-import { useState } from "react";
-import {
-  Bot,
-  Clapperboard,
-  Code2,
-  Compass,
-  Megaphone,
-  Plus,
-  type LucideIcon,
-} from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "./reveal";
-import { cn } from "@/lib/utils";
-
-type Service = {
-  icon: LucideIcon;
-  title: string;
-  hook: string;
-  bullets: string[];
-};
-
-const SERVICES: Service[] = [
-  {
-    icon: Code2,
-    title: "Custom Websites",
-    hook: "Landing pages, business sites and web apps — built fast, built to convert.",
-    bullets: [
-      "High-conversion landing pages",
-      "Full business & portfolio sites",
-      "Custom web apps and dashboards",
-      "Speed, SEO and mobile-first by default",
-    ],
-  },
-  {
-    icon: Bot,
-    title: "AI Automations",
-    hook: "Never miss a lead again — your business answers in seconds, 24/7.",
-    bullets: [
-      "AI call automation for enquiries",
-      "WhatsApp automation for lead capture",
-      "Instagram DM & chat auto-replies",
-      "Support flows wired into your CRM",
-    ],
-  },
-  {
-    icon: Clapperboard,
-    title: "AI Content Creation",
-    hook: "Reels and short-form built with AI tools, ready to post every week.",
-    bullets: [
-      "AI video/reels (Google Flow & co.)",
-      "Consistent posting-ready batches",
-      "Hooks, captions and scripting",
-      "On-brand visual direction",
-    ],
-  },
-  {
-    icon: Megaphone,
-    title: "Meta Ad Campaigns",
-    hook: "Facebook & Instagram ads that buy customers, not impressions.",
-    bullets: [
-      "Offer and funnel strategy",
-      "Creative production & testing",
-      "Daily campaign management",
-      "Transparent reporting on spend",
-    ],
-  },
-  {
-    icon: Compass,
-    title: "AI Growth Consultation",
-    hook: "Specialised advisory on exactly where AI moves your numbers.",
-    bullets: [
-      "Audit of your current workflows",
-      "AI opportunity map, prioritised",
-      "Tool stack recommendations",
-      "Rollout roadmap you can execute",
-    ],
-  },
-];
+import { SERVICES, type Service } from "@/data/services";
 
 function ServiceCard({ service, index }: { service: Service; index: number }) {
-  const [open, setOpen] = useState(false);
   const Icon = service.icon;
 
   return (
-    <Reveal
-      as="article"
-      delay={index * 70}
-      className={cn("surface-card group relative overflow-hidden p-6", index === 0 && "lg:row-span-1")}
-    >
-      <div
-        className="pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
-        style={{
-          background:
-            "radial-gradient(circle, color-mix(in oklab, var(--electric) 30%, transparent), transparent 70%)",
-        }}
-      />
-      <div className="relative flex items-start justify-between gap-4">
-        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[image:var(--gradient-brand)] text-primary-foreground">
-          <Icon className="h-5 w-5" />
-        </span>
-        <span className="font-mono text-[10px] tracking-widest text-muted-foreground">
-          0{index + 1}
-        </span>
-      </div>
-
-      <h3 className="relative mt-5 text-lg font-semibold">{service.title}</h3>
-      <p className="relative mt-2 text-sm text-muted-foreground">{service.hook}</p>
-
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        className="relative mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
+    <Reveal as="article" delay={index * 70} className="surface-card group overflow-hidden">
+      <Link
+        to="/work/$slug"
+        params={{ slug: service.slug }}
+        className="block focus-visible:outline-none"
       >
-        <Plus
-          className={cn("h-4 w-4 transition-transform duration-300", open && "rotate-45")}
-        />
-        {open ? "Hide details" : "What's included"}
-      </button>
+        <div className="relative aspect-[4/3] overflow-hidden">
+          <img
+            src={service.image}
+            alt={`${service.title} work by LumaScale`}
+            loading="lazy"
+            width={1200}
+            height={900}
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+          />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, transparent 35%, color-mix(in oklab, var(--ink) 78%, transparent))",
+            }}
+          />
+          <span className="absolute top-4 left-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-background/90 text-primary backdrop-blur">
+            <Icon className="h-5 w-5" />
+          </span>
+          <span className="absolute top-4 right-4 rounded-full bg-background/80 px-2 py-0.5 font-mono text-[10px] tracking-widest text-muted-foreground backdrop-blur">
+            0{index + 1}
+          </span>
+          <h3 className="absolute right-5 bottom-4 left-5 text-lg font-semibold text-primary-foreground">
+            {service.title}
+          </h3>
+        </div>
 
-      <div
-        className={cn(
-          "relative grid transition-all duration-500 ease-out",
-          open ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
-        )}
-      >
-        <ul className="overflow-hidden space-y-2 text-sm text-muted-foreground">
-          {service.bullets.map((b) => (
-            <li key={b} className="flex gap-2">
-              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary" />
-              {b}
-            </li>
-          ))}
-        </ul>
-      </div>
+        <div className="p-6">
+          <p className="text-sm text-muted-foreground">{service.hook}</p>
+          <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+            See the work
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </span>
+        </div>
+      </Link>
     </Reveal>
   );
 }
@@ -145,11 +61,14 @@ export function Services() {
           <h2 className="mt-3 max-w-2xl text-3xl font-bold text-balance sm:text-4xl">
             Five services. One operator. Everything pointed at revenue.
           </h2>
+          <p className="mt-3 max-w-xl text-sm text-muted-foreground">
+            Open any one to see how it's built and the kind of work it produces.
+          </p>
         </Reveal>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, i) => (
-            <ServiceCard key={s.title} service={s} index={i} />
+            <ServiceCard key={s.slug} service={s} index={i} />
           ))}
 
           <Reveal
@@ -164,7 +83,7 @@ export function Services() {
               </p>
             </div>
             <a
-              href="#contact"
+              href="/#contact"
               className="mt-6 inline-flex w-fit rounded-full bg-background/95 px-5 py-2.5 text-sm font-semibold text-foreground transition-transform hover:scale-[1.03]"
             >
               Get a straight answer
