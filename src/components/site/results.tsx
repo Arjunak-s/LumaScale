@@ -1,5 +1,8 @@
+import { Link } from "@tanstack/react-router";
 import { Quote, Star } from "lucide-react";
 import { Reveal } from "./reveal";
+import { SERVICES } from "@/data/services";
+
 
 const METRICS = [
   ["3.4x", "Avg. return on ad spend (placeholder)"],
