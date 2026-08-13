@@ -120,17 +120,17 @@ function WorkPage() {
                 delay={i * 80}
                 className="surface-card grid overflow-hidden md:grid-cols-2"
               >
-                <div className={i % 2 === 1 ? "md:order-2" : ""}>
+                <div className={`aspect-[4/3] overflow-hidden md:aspect-auto ${i % 2 === 1 ? "md:order-2" : ""}`}>
                   <img
                     src={p.image}
                     alt={p.name}
                     loading="lazy"
                     width={1200}
                     height={900}
-                    className="h-full min-h-56 w-full object-cover"
+                    className="h-full max-h-[24rem] w-full object-cover"
                   />
                 </div>
-                <div className="p-7">
+                <div className="flex flex-col justify-center p-7">
                   <h3 className="text-xl font-semibold">{p.name}</h3>
                   <p className="mt-3 text-sm text-muted-foreground">{p.summary}</p>
                   <p className="mt-4 font-display text-lg font-bold text-gradient">{p.result}</p>
