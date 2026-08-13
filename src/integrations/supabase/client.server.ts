@@ -40,6 +40,7 @@ function createSupabaseAdminClient() {
     ];
     const message = `Missing Supabase environment variable(s): ${missing.join(', ')}. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in your environment.`;
     console.error(`[Supabase] ${message}`);
+    // Throw here because server-side admin client must not be created without keys
     throw new Error(message);
   }
 

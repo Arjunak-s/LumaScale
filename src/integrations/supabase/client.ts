@@ -40,7 +40,14 @@ function createSupabaseClient() {
     ];
     const message = `Missing Supabase environment variable(s): ${missing.join(', ')}. Set SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY in your environment.`;
     console.error(`[Supabase] ${message}`);
-    throw new Error(message);
+    // Return harmless proxy to avoid throwing during import/SSR. Attempts to call methods will throw with the same message.
+    return new Proxy({} as ReturnType<typeof createSupabaseClient>, {
+      get() {
+        return () => {
+          throw new Error(message);
+        };
+      },
+    });
   }
 
   return createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {

@@ -51,6 +51,20 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
+        {/* Debug: show error details when VITE_SHOW_ERRORS=true in env */}
+        {import.meta.env.VITE_SHOW_ERRORS === "true" && (
+          <pre className="mt-3 text-left rounded bg-muted p-3 text-xs text-foreground overflow-auto">
+            <strong>Error:</strong> {String(error?.message || error)}
+            {error instanceof Error && error.stack ? (
+              <>
+                {'\n\n'}
+                <strong>Stack:</strong>
+                {'\n'}
+                {error.stack}
+              </>
+            ) : null}
+          </pre>
+        )}
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
