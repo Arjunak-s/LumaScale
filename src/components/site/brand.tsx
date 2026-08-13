@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 export function Logo({ className }: { className?: string }) {
   return (
     <a
-      href="#top"
+      href="/"
       className={cn("group flex items-center gap-2", className)}
       aria-label="LumaScale home"
     >
