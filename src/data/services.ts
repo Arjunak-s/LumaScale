@@ -15,6 +15,7 @@ export type Project = {
   image: string;
   tags: string[];
   result: string;
+  videos?: string[];
 };
 
 export type Service = {
@@ -45,12 +46,15 @@ export const SERVICES: Service[] = [
       "Every site is designed around one job: turn a visitor into an enquiry. Hand-built, fast on 4G, and easy for you to update.",
     projects: [
       {
-        name: "Cafe Aurora",
+        name: "Velvet Tips — Kalikapur, Kolkata",
         summary:
-          "One-page site for a neighbourhood cafe with menu, gallery and a table-booking flow wired to WhatsApp.",
+          "Salon & mobile beauty services: nail art, tattoos, lip blush, microblading, piercing and more — bookable at the shop or at home.",
         image: work1,
-        tags: ["Landing page", "WhatsApp booking", "SEO"],
-        result: "Bookings moved off phone calls entirely",
+        videos: [
+          "https://riclnykztdpcphkzzuhw.supabase.co/storage/v1/object/public/web-demos/WhatsApp%20Video%202026-08-12%20at%201.05.03%20PM.mp4",
+        ],
+        tags: ["Salon site", "Mobile services", "WhatsApp booking"],
+        result: "Service demos and booking flow showcased",
       },
       {
         name: "NorthPeak Ops",

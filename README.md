@@ -75,15 +75,7 @@ page with anchor navigation), not a multi-page site — keep it simple to launch
 fast. Use placeholder copy where I haven't given exact wording, but keep the
 structure and service descriptions above accurate.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/ab1b0338-8fe4-4e5b-814f-db7007db35bc).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+This repository contains the LumaScale landing page. Remove or replace any third-party editor integrations before connecting to your own GitHub.
 
 ## Development
 
@@ -95,3 +87,5 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+Note: If you previously used a third-party editor or platform to scaffold this project, check for platform-specific files (e.g., CI hooks or tool-specific config) and remove them before pushing to a new GitHub repository.

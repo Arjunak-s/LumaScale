@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site/footer";
 import { Reveal } from "@/components/site/reveal";
 import { SERVICES, getService } from "@/data/services";
 import { SITE } from "@/components/site/brand";
+import { ReelsGallery } from "@/components/site/reels";
 
 export const Route = createFileRoute("/work/$slug")({
   component: WorkPage,
@@ -121,14 +122,28 @@ function WorkPage() {
                 className="surface-card grid overflow-hidden md:grid-cols-2"
               >
                 <div className={`aspect-[4/3] overflow-hidden md:aspect-auto ${i % 2 === 1 ? "md:order-2" : ""}`}>
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    loading="lazy"
-                    width={1200}
-                    height={900}
-                    className="h-full max-h-[24rem] w-full object-cover"
-                  />
+                  {p.videos && p.videos.length > 0 ? (
+                    <video
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="h-full max-h-[24rem] w-full object-cover bg-black"
+                      crossOrigin="anonymous"
+                      onError={(e) => console.error('Project video error', e)}
+                    >
+                      <source src={p.videos[0]} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      loading="lazy"
+                      width={1200}
+                      height={900}
+                      className="h-full max-h-[24rem] w-full object-cover"
+                    />
+                  )}
                 </div>
                 <div className="flex flex-col justify-center p-7">
                   <h3 className="text-xl font-semibold">{p.name}</h3>
@@ -152,6 +167,12 @@ function WorkPage() {
           <p className="mt-6 text-xs text-muted-foreground">
             Client names on some projects are withheld until case studies are published.
           </p>
+          {/* Show Reels gallery only for the Content service */}
+          {service.slug === "content" && (
+            <div className="mt-12">
+              <ReelsGallery />
+            </div>
+          )}
         </div>
       </section>
 
