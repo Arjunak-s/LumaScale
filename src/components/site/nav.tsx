@@ -4,11 +4,11 @@ import { Logo } from "./brand";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
-  { href: "#services", label: "Services" },
-  { href: "#why", label: "Why us" },
-  { href: "#next", label: "What's next" },
-  { href: "#process", label: "Process" },
-  { href: "#results", label: "Results" },
+  { href: "/#services", label: "Services" },
+  { href: "/#why", label: "Why us" },
+  { href: "/#next", label: "What's next" },
+  { href: "/#process", label: "Process" },
+  { href: "/#results", label: "Results" },
 ];
 
 export function SiteNav() {
@@ -53,7 +53,7 @@ export function SiteNav() {
 
         <div className="flex items-center gap-2">
           <a
-            href="#contact"
+            href="/#contact"
             className="hidden items-center gap-1.5 rounded-full bg-[image:var(--gradient-brand)] px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-lift)] transition-transform duration-200 hover:scale-[1.03] sm:inline-flex"
           >
             Book a free call <ArrowUpRight className="h-4 w-4" />
@@ -83,7 +83,7 @@ export function SiteNav() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/#contact"
             onClick={() => setOpen(false)}
             className="mt-1 block rounded-xl bg-[image:var(--gradient-brand)] px-4 py-3 text-center text-sm font-semibold text-primary-foreground"
           >

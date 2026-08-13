@@ -1,6 +1,8 @@
 import { ArrowUpRight, Instagram, Sparkles } from "lucide-react";
 import { SITE } from "./brand";
 import { Reveal } from "./reveal";
+import heroDesk from "@/assets/hero-desk.jpg";
+
 
 function NetworkMotif() {
   const nodes = [
@@ -158,16 +160,27 @@ export function Hero() {
 
         <Reveal delay={200} className="relative">
           {/* Easter egg: the console says hi to curious devs */}
-          <div className="relative mx-auto aspect-square w-full max-w-md">
-            <div className="absolute inset-0 rounded-[2rem] border border-border bg-card/60 backdrop-blur-sm" />
-            <div className="absolute inset-4">
-              <NetworkMotif />
+          <div className="relative mx-auto w-full max-w-md">
+            <div className="overflow-hidden rounded-[2rem] border border-border shadow-[var(--shadow-lift)]">
+              <img
+                src={heroDesk}
+                alt="Arjun working on client dashboards and code late at night"
+                width={1200}
+                height={1408}
+                className="aspect-[6/7] w-full object-cover"
+              />
             </div>
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-border bg-card/90 px-3 py-1 font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
-              luma · scale · repeat
+            <div className="absolute -bottom-5 -left-4 w-40 rounded-2xl border border-border bg-card/95 p-3 shadow-[var(--shadow-lift)] backdrop-blur">
+              <div className="h-16 w-full">
+                <NetworkMotif />
+              </div>
+              <p className="mt-1 text-center font-mono text-[9px] tracking-widest text-muted-foreground uppercase">
+                luma · scale · repeat
+              </p>
             </div>
           </div>
         </Reveal>
+
       </div>
     </section>
   );
