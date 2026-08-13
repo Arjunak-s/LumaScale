@@ -41,7 +41,33 @@ export function Results() {
           </p>
         </Reveal>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.flatMap((s) =>
+            s.projects.map((p) => ({ ...p, slug: s.slug, service: s.title })),
+          )
+            .slice(0, 6)
+            .map((p, i) => (
+              <Reveal key={`${p.slug}-${p.name}`} delay={i * 60} className="surface-card group overflow-hidden">
+                <Link to="/work/$slug" params={{ slug: p.slug }} className="block">
+                  <img
+                    src={p.image}
+                    alt={`${p.name} — ${p.service}`}
+                    loading="lazy"
+                    width={1200}
+                    height={900}
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="p-4">
+                    <p className="text-sm font-semibold">{p.name}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">{p.service}</p>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+        </div>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
           {METRICS.map(([k, v], i) => (
             <Reveal key={v} delay={i * 70} className="surface-card p-6">
               <p className="font-display text-3xl font-bold text-gradient">{k}</p>
