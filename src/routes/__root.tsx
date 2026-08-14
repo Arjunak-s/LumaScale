@@ -91,17 +91,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "LumaScale — AI Growth Partner" },
-      { name: "description", content: "AI-powered websites, automations, content and ads." },
+      { name: "description", content: "LumaScale builds custom websites, AI automations, AI content, and Meta ad campaigns that turn attention into revenue. Founder-led, fast, AI-first." },
       { name: "author", content: "Arjun · LumaScale" },
+      { name: "keywords", content: "AI agency, AI automation, custom websites, Meta ads, AI content creation, WhatsApp automation, Instagram automation, lead generation, LumaScale, Arjun" },
+      { name: "theme-color", content: "#0a0a0f" },
+      { name: "robots", content: "index, follow" },
+      // Open Graph
       { property: "og:site_name", content: "LumaScale" },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://lumascale.in/" },
+      { property: "og:title", content: "LumaScale — AI Growth Partner for Ambitious Businesses" },
+      { property: "og:description", content: "LumaScale builds custom websites, AI automations, AI content, and Meta ad campaigns that turn attention into revenue." },
+      { property: "og:image", content: "https://lumascale.in/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      // Twitter / X card
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@lumascale" },
+      { name: "twitter:title", content: "LumaScale — AI Growth Partner" },
+      { name: "twitter:description", content: "Custom websites, AI automations, short-form content, and Meta ads — all AI-first." },
+      { name: "twitter:image", content: "https://lumascale.in/og-image.png" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "canonical", href: "https://lumascale.in/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -109,6 +125,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap",
       },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
   }),
 
