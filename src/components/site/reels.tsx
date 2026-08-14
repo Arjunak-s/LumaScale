@@ -18,7 +18,14 @@ export function ReelsGallery() {
     let mounted = true;
     (async () => {
       try {
-        const { data } = await supabase.from("reels").select("id,title,description,public_url,storage_path,thumbnail_url").order("created_at", { ascending: false }).limit(100);
+        const { data, error } = await supabase
+          .from("reels")
+          .select("id,title,description,public_url,storage_path,thumbnail_url")
+          .order("created_at", { ascending: false })
+          .limit(100);
+        if (error) {
+          console.error("Supabase reels query error:", error);
+        }
         if (!mounted) return;
         setReels((data as Reel[]) || []);
       } catch (e) {
@@ -52,11 +59,11 @@ export function ReelsGallery() {
                 onError={(e) => console.error("Video error", e)}
               >
                 {(() => {
-                  // prefer explicit public_url; otherwise construct full Supabase storage URL
+                  const baseUrl = import.meta.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || "https://riclnykztdpcphkzzuhw.supabase.co";
                   const publicUrl = r.public_url
                     ? r.public_url
                     : r.storage_path
-                    ? `${import.meta.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL}/storage/v1/object/public/${encodeURIComponent(
+                    ? `${baseUrl}/storage/v1/object/public/${encodeURIComponent(
                         String(r.storage_path),
                       ).replaceAll("%2F", "/")}`
                     : null;
