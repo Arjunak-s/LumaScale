@@ -91,6 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "LumaScale — AI Growth Partner" },
+      { name: "google-site-verification", content: "HT_ElFdptzJHAMh1eBKfwO_AvVwJonEFLCd8U44l7xg" },
       { name: "description", content: "LumaScale builds custom websites, AI automations, AI content, and Meta ad campaigns that turn attention into revenue. Founder-led, fast, AI-first." },
       { name: "author", content: "Arjun · LumaScale" },
       { name: "keywords", content: "AI agency, AI automation, custom websites, Meta ads, AI content creation, WhatsApp automation, Instagram automation, lead generation, LumaScale, Arjun" },
