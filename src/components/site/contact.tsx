@@ -1,10 +1,17 @@
 import { useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
 import { Check, Instagram, Loader2, Mail, MessageCircle, Send } from "lucide-react";
 import { toast } from "sonner";
-import { contactSchema, submitContact } from "@/lib/contact.functions";
+import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 import { SITE } from "./brand";
 import { Reveal } from "./reveal";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Please enter your name").max(100),
+  business: z.string().trim().max(120).optional().or(z.literal("")),
+  email: z.string().trim().email("Enter a valid email").max(255),
+  need: z.string().trim().min(10, "Tell me a bit more (10+ characters)").max(1500),
+});
 
 const CHANNELS = [
   {
@@ -18,7 +25,6 @@ const CHANNELS = [
 ];
 
 export function Contact() {
-  const send = useServerFn(submitContact);
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -47,7 +53,15 @@ export function Contact() {
     setErrors({});
     setLoading(true);
     try {
-      await send({ data: parsed.data });
+      const { error } = await supabase.from("contact_submissions").insert({
+        name: parsed.data.name,
+        business: parsed.data.business || null,
+        email: parsed.data.email,
+        need: parsed.data.need,
+      });
+
+      if (error) throw error;
+
       setDone(true);
       toast.success("Message sent — Arjun will get back to you shortly.");
     } catch {
