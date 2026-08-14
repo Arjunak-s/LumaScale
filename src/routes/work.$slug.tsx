@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site/footer";
 import { Reveal } from "@/components/site/reveal";
 import { SERVICES, getService } from "@/data/services";
 import { SITE } from "@/components/site/brand";
-import { ReelsGallery } from "@/components/site/reels";
+import { ServiceVideoGallery } from "@/components/site/service-video-gallery";
 
 export const Route = createFileRoute("/work/$slug")({
   component: WorkPage,
@@ -167,12 +167,8 @@ function WorkPage() {
           <p className="mt-6 text-xs text-muted-foreground">
             Client names on some projects are withheld until case studies are published.
           </p>
-          {/* Show Reels gallery only for the Content service */}
-          {service.slug === "content" && (
-            <div className="mt-12">
-              <ReelsGallery />
-            </div>
-          )}
+          {/* Dynamic video gallery — shows portfolio_videos for this service */}
+          <ServiceVideoGallery slug={service.slug} />
         </div>
       </section>
 

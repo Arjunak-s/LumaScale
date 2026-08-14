@@ -41,6 +41,45 @@ export type Database = {
         }
         Relationships: []
       }
+      portfolio_videos: {
+        Row: {
+          id: number
+          created_at: string
+          service_slug: string
+          title: string
+          description: string | null
+          tags: string[] | null
+          storage_path: string | null
+          public_url: string | null
+          thumbnail_url: string | null
+          sort_order: number
+        }
+        Insert: {
+          id?: never
+          created_at?: string
+          service_slug: string
+          title: string
+          description?: string | null
+          tags?: string[] | null
+          storage_path?: string | null
+          public_url?: string | null
+          thumbnail_url?: string | null
+          sort_order?: number
+        }
+        Update: {
+          id?: never
+          created_at?: string
+          service_slug?: string
+          title?: string
+          description?: string | null
+          tags?: string[] | null
+          storage_path?: string | null
+          public_url?: string | null
+          thumbnail_url?: string | null
+          sort_order?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
