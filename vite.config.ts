@@ -14,6 +14,14 @@ export default defineConfig({
   },
   nitro: {
     preset: process.env.NITRO_PRESET || "vercel",
+    externals: {
+      inline: [
+        "@tanstack/react-start",
+        "@tanstack/start-client-core",
+        "@tanstack/start-server-core",
+        "@tanstack/start-plugin-core",
+      ],
+    },
   },
 });
 
