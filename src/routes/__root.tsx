@@ -100,10 +100,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       // Open Graph
       { property: "og:site_name", content: "LumaScale" },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://lumascale.in/" },
+      { property: "og:url", content: "https://www.lumascale.in/" },
       { property: "og:title", content: "LumaScale — AI Growth Partner for Ambitious Businesses" },
       { property: "og:description", content: "LumaScale builds custom websites, AI automations, AI content, and Meta ad campaigns that turn attention into revenue." },
-      { property: "og:image", content: "https://lumascale.in/og-image.png" },
+      { property: "og:image", content: "https://www.lumascale.in/og-image.png" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       // Twitter / X card
@@ -111,14 +111,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@lumascale" },
       { name: "twitter:title", content: "LumaScale — AI Growth Partner" },
       { name: "twitter:description", content: "Custom websites, AI automations, short-form content, and Meta ads — all AI-first." },
-      { name: "twitter:image", content: "https://lumascale.in/og-image.png" },
+      { name: "twitter:image", content: "https://www.lumascale.in/og-image.png" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "canonical", href: "https://lumascale.in/" },
+      { rel: "canonical", href: "https://www.lumascale.in/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

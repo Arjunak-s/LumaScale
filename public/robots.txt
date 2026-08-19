@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lumascale.in/sitemap.xml
+Sitemap: https://www.lumascale.in/sitemap.xml
